@@ -52,44 +52,7 @@
 <script>
     /////////////Ajax Requests////////////
 
-    // TABLE
-    $(document).ready(function() {
-        // Fetch the initial table
-        refreshTable();
-    
-        // Fetch every 1 second
-        setInterval(refreshTable, 1000);
-    });
-    
-    function refreshTable(){
-        
-        // var trHTML = '';	    
-        
-        $.getJSON('https://spreadsheets.google.com/feeds/list/1I9exieNjN0ULe3ieHCzPtuTOdebO9lokWmtC2wRDj6M/1/public/full?alt=json#', function(data) {
-        	
-            	var trHTML = '';
-
-            	for (var i = 0; i < data.feed.entry.length; ++i) {
-                	var myData_map, myData_order;
-
-                    trHTML += '<tr><td>' + data.feed.entry[i].gsx$orderid.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$item.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$priority.$t + 
-                        	  '</td><td>' + data.feed.entry[i].gsx$quantity.$t + 
-                        	  '</td><td>'  + data.feed.entry[i].gsx$city.$t + 
-                        	  '</td></tr>';
-
-                }
-
-                console.log(trHTML);
-        		$('#tableContent').html(trHTML);
-        		var trHTML = '';
-
-        	});	 
-    }	
-
-
-// MAP
+    // MAP
     $(document).ready(function() {
         // Fetch the initial Map
         refreshMap();
@@ -204,6 +167,46 @@
       chart.draw(data, options);
     });	 
   }
+    
+    
+    // TABLE
+    $(document).ready(function() {
+        // Fetch the initial table
+        refreshTable();
+    
+        // Fetch every 1 second
+        setInterval(refreshTable, 1000);
+    });
+    
+    function refreshTable(){
+        
+        // var trHTML = '';	    
+        
+        $.getJSON('https://spreadsheets.google.com/feeds/list/1I9exieNjN0ULe3ieHCzPtuTOdebO9lokWmtC2wRDj6M/1/public/full?alt=json#', function(data) {
+        	
+            	var trHTML = '';
+
+            	for (var i = 0; i < data.feed.entry.length; ++i) {
+                	var myData_map, myData_order;
+
+                    trHTML += '<tr><td>' + data.feed.entry[i].gsx$orderid.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$item.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$priority.$t + 
+                        	  '</td><td>' + data.feed.entry[i].gsx$quantity.$t + 
+                        	  '</td><td>'  + data.feed.entry[i].gsx$city.$t + 
+                        	  '</td></tr>';
+
+                }
+
+                console.log(trHTML);
+        		$('#tableContent').html(trHTML);
+        		var trHTML = '';
+
+        	});	 
+    }	
+
+
+
     
 </script>
 </html>
